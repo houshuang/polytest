@@ -1,0 +1,49 @@
+<html><head>
+    
+ <script src="bower_components/webcomponentsjs/webcomponents-lite.js">
+    </script>
+    <link rel="import" href="bower_components/polymer/polymer.html">
+    </head>
+<body>
+    <dom-module id="test-element">
+
+  <template>
+    <div>{{greeting}}</div> <!-- data bindings in local DOM -->
+  </template>
+
+  <script>
+    // element registration
+    Polymer({
+      is: "test-element",
+
+      properties: {
+        greeting: {
+          type: String,
+          value: "Salud!!"
+        }
+      }
+    });
+  </script>
+
+</dom-module>
+
+<dom-module id=wrapper-element>
+    <template>
+        <test-element id=a1 greeting={{greeting1}}></test-element>
+        <test-element id=a2 greeting={{greeting2}}></test-element>
+        <test-element id=a3></test-element>
+    </template>
+    <script>
+        Polymer({
+            is: "wrapper-element",
+
+            properties: { greeting1: { value: "Hello" }, greeting2: { value: "Tjena" }}
+        })
+    </script>
+</dom-module>
+
+<wrapper-element id=wrapper-element1></wrapper-element>
+
+</body>
+</html>
+
